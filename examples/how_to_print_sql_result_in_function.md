@@ -12,7 +12,7 @@ HINT:  If you want to discard the results of a SELECT, use PERFORM instead.
 
                RAISE NOTICE 'ici 222 %', (
                     SELECT 
-                        array_agg(row_to_json(t))
+                        jsonb_pretty(json_agg(row_to_json(t))::jsonb)
                     FROM
                         (
                             SELECT
